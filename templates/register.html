@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+{% block title %}
+    Register
+{%endblock%}
+
+{%block main%}
+
+
+    <form action="/register" method="post">
+        <div class="mb-3">
+        <!-- This is an input field where the user can create their username -->
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="email" name="email" placeholder="Harvard Email" type="text">
+        </div>
+        <div class="mb-3">
+        <!-- This is an input field where the user can create their password -->
+            <input class="form-control mx-auto w-auto" id="password" name="password" placeholder="Password" type="password">
+        </div>
+        <div class="mb-3">
+        <!-- This is an input field where the user can confirm their password -->
+            <input class="form-control mx-auto w-auto" id="confirmation" name="confirmation" placeholder="Password (again)" type="password">
+        </div>
+
+        <div class="mb-3">
+            <!-- This is an input field where the user can input their first name -->
+            <input class="form-control mx-auto w-auto" id="first_name" name="first_name" placeholder="First name" type="text">
+        </div>
+
+        <div class="mb-3">
+            <!-- This is an input field where the user can input their last name -->
+            <input class="form-control mx-auto w-auto" id="last_name" name="last_name" placeholder="Lash name" type="text">
+        </div>
+
+        <div class="mb-3">
+            <!-- This is an input field where the user can confirm their password -->
+            <input class="form-control mx-auto w-auto" id="phone_number" name="phone_number" placeholder="Phone number" type="text">
+        </div>
+
+        <div class="mb-3">
+            <!-- This is an input field where the user can enter their birthday-->
+            <input class="form-control mx-auto w-auto" id="birthday" name="birthday" placeholder="Birthday (01/23/1900)" type="text">
+        </div>
+
+        <button class="mauve-button" type="submit">Register</button>
+    </form>
+{% endblock %}

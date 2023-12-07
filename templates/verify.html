@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block title %}
+    Verify
+{%endblock%}
+
+{%block main%}
+
+
+    <form action="/verify" method="post">
+        <div class="mb-3">
+            <!-- This is an input field where the user can enter their verification code-->
+            <label for="verification_code">Verification Code:</label>
+            <input class="form-control mx-auto w-auto" type="text" id="verification_code" name="verification_code" placeholder= "Verification code" required>
+        </div>
+        <button class="mauve-button" type="submit">Verify</button>
+    </form>
+{% endblock %}

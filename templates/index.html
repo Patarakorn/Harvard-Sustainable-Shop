@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+{% block title %}
+    Index
+{%endblock%}
+
+{%block main%}
+    <main class="container py-5 text-center">
+        <h1>Product List</h1>
+        <!-- Check if there are products to display-->
+        {% if products %}
+            <div class="row">
+                <!--Iterate over all of the products in products-->
+                {% for product in products %}
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <img src="/{{ product.image }}" class="card-img-top" alt="{{ product.title }} Image" style="height: 400px; object-fit: contain;">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ product.title }}</h5>
+                                <p class="card-text">{{ product.description }}</p>
+                                <p class="card-text">Price: ${{ product.price }}</p>
+                                <p class="card-text">Category: {{ product.category }}</p>
+                                <p class="card-text">Status: {{ product.status }}</p>
+                                <div class="seller-link">
+                                    <a href="{{ url_for('seller_items', seller_id = product.seller_id, seller_email=product.email) }}">Seller: {{ product.email }}</a>
+                                </div>
+                                <div class="add-to-cart-form">
+                                    <form action="/add_to_cart/{{ product.id }}" method="post">
+                                        <input type="hidden" name="product_id" value="{{ product.id }}">
+                                        <button class="mauve-button" type="submit">Add to Cart</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>No products available.</p>
+        {% endif %}
+    </main>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Search
+{% endblock %}
+
+{% block main %}
+    <h2>Search for Products</h2>
+    <form action="{{ url_for('search') }}" method="post">
+        <input type="text" name="search_query" placeholder="Enter search query" required>
+        <button class="mauve-button" type="submit">Search</button>
+    </form>
+{% endblock %}

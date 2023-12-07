@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block title %}
+   Purchases
+{% endblock %}
+
+{% block main %}
+   <main class="container py-5 text-center">
+       <h1>Purchased Items</h1>
+       <!-- Check if there are any purchased items to display -->
+       {% if purchased_items %}
+           <div class="row">
+               <!-- Iterate over all purchased items -->
+               {% for item in purchased_items %}
+                   <div class="col-md-4 mb-4">
+                       <div class="card">
+                           <img src="{{ item.image }}" class="card-img-top" alt="{{ item.title }} Image" style="height: 400px; object-fit: contain;">
+                           <div class="card-body">
+                               <h5 class="card-title">{{ item.title }}</h5>
+                               <p class="card-text">{{ item.description }}</p>
+                               <p class="card-text">Price: ${{ item.price }}</p>
+                               <p class="card-text">Category: {{ item.category }}</p>
+                               <p class="card-text">Seller: {{ item.seller_email }}</p>
+                           </div>
+                       </div>
+                   </div>
+               {% endfor %}
+           </div>
+       {% else %}
+           <p>No purchased items available.</p>
+       {% endif %}
+   </main>
+{% endblock %}
+
+
+

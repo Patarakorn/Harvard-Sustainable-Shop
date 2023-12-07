@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+{% block title %}
+    Cart
+{% endblock %}
+
+{% block main %}
+    <main class="container py-5 text-center">
+        <h1>Shopping Cart</h1>
+
+        {% if products %}
+            <div class="row">
+                {% for product in products %}
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <img src="{{ product.image }}" class="card-img-top" alt="{{ product.title }} Image">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ product.title }}</h5>
+                                <p class="card-text">{{ product.description }}</p>
+                                <p class="card-text">Price: ${{ product.price }}</p>
+                                <p class="card-text">Category: {{ product.category }}</p>
+                                <div class="seller-link">
+                                    <a href="{{ url_for('seller_items', seller_id=product.seller_id) }}">Seller: {{ product.seller_email }}</a>
+                                </div>
+                                <!-- Separate form for removing from cart -->
+                                <form action="{{ url_for('delete_from_cart', product_id=product.id) }}" method="post">
+                                    <button type="submit" class="mauve-button">Remove from Cart</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            <form action="/buy" method="post">
+                <input type="hidden" name="buyer_id" value="{{ session.get('user_id') }}">
+                <div class="text-center mt-4">
+                    <button type="submit" class="mauve-button">Buy Now</button>
+                </div>
+            </form>
+        </div>
+    {% else %}
+        <p>Your cart is empty.</p>
+    {% endif %}
+</main>
+{% endblock %}
